@@ -6,7 +6,7 @@ interface TransactionsProps {
   type: 'income' | 'outcome'
   price: number
   category: string
-  createAt: string
+  createdAt: string
 }
 
 interface TransactionContextType {
