@@ -6,11 +6,22 @@ export const TransactionsContainer = styled.main`
   margin: 4rem auto 0;
   padding: 0 1.5rem;
 `
+
+export const TransactionsContent = styled.div`
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+  }
+`
+
 export const TransactionsTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
   margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+  }
 
   td {
     padding: 1.25rem 2rem;
