@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 import { createContext } from 'use-context-selector'
 
@@ -43,7 +43,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
   }
 
-  async function fetchTransactions(query?: string) {
+  const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get('/transactions')
 
     const dataSorted: TransactionsProps[] = response.data.sort(sortByDataDesc)
@@ -59,7 +59,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
 
     setTransactions(dataFiltered || dataSorted)
-  }
+  }, [])
 
   async function createTransaction(data: CreateTransactionsInput) {
     const { description, price, category, type } = data
